@@ -5,6 +5,6 @@ import Navigation from './navigation';
 export default function App() {
   return (
     <Navigation />
-    //<Text>TESTING</Text>
+    //<Text classname="text-red-500">TESTING</Text>
   );
 }
