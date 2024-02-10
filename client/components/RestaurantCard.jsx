@@ -3,10 +3,12 @@ import React from 'react'
 import "react-native-tailwindcss"
 import * as Icon from 'react-native-feather'
 import { themeColors } from '../theme'
+import { useNavigation } from '@react-navigation/native'
 
 export default function RestaurantCard({item}) {
+  const navigation = useNavigation()
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={()=>{navigation.navigate('Restaurant',  {...item})}}>
         <View style={{
             shadowColor: themeColors.bgColor(0.2),
             shadowRadius: 7
