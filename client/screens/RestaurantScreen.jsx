@@ -1,9 +1,11 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, StatusBar, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import * as Icon from 'react-native-feather'
 import { themeColors } from '../theme'
-import tw from "react-native-tailwindcss"
+import "react-native-tailwindcss"
+import DishRow from '../components/DishRow'
+import CartIcon from '../components/CartIcon'
 
 export default function RestaurantScreen() {
   const navigation = useNavigation();
@@ -12,6 +14,8 @@ export default function RestaurantScreen() {
 
   return (
     <View>
+      <CartIcon />
+      <StatusBar style="Light"/>
       <ScrollView>
         <View classname="relative">
           <Image source={item.image} className="w-full h-72"/>
@@ -41,6 +45,13 @@ export default function RestaurantScreen() {
               </View>
               <Text className="text-gray-500 mt-2">{item.description}</Text>
             </View>
+        </View>
+        <View className="pb-36 bg-white">
+          <Text className="px-4 py-4 text-2xl font-bold">Menu</Text>
+          {/*dishes*/}
+          {
+            item.dishes.map((dish, index)=> <DishRow item={{...dish}} key={index}/>)
+          }
         </View>
       </ScrollView>
     </View>
